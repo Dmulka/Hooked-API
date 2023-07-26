@@ -1,5 +1,5 @@
 const { User } = require('../models')
-const db = require('../db')
+
 
 // Creat ***********
 
@@ -9,7 +9,7 @@ const getUser = async (req, res) => {
         let allUsers = await Users.find()
         res.send(allUsers)
     } catch (e) {
-        return res.status(500).send(e.message):
+        return res.status(500).send(e.message)
     }}
 
 /// find by name 
@@ -88,5 +88,4 @@ getUserById,
 updateUser,
 createUser,
 deleteUser
-
 }
