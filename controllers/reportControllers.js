@@ -1,8 +1,6 @@
 const { Report } = require('../models')
 
 
-// Creat ***********
-
 /// get all reports
 const getReport = async (req, res) => {
     try{
@@ -104,5 +102,4 @@ const deleteReport = async (req, res) => {
         updateReport,
         createUser,
         deleteReport
-    
         }

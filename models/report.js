@@ -7,7 +7,7 @@ const  reportSchema = new Schema (
         lon: {type: Number, required: true},
         species: {type: String, required: true},
         depth: {type: Number, required: true},
-        bait_used:{ type: String, required: true},
+        baitUsed:{ type: String, required: true},
         comment: {type: String, required: true},
     },
     {

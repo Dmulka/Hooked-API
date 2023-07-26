@@ -1,7 +1,6 @@
 const { User } = require('../models')
 
 
-// Creat ***********
 
 /// get all users 
 const getUser = async (req, res) => {
