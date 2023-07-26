@@ -13,10 +13,5 @@ Router.delete('/:id', controller.deleteReport)
 
 module.exports = Router
 
-        // getReport,
-        // findByuserName,
-        // getreportById,
-        // updateReport,
-        // createUser,
-        // deleteReport
+     
 
