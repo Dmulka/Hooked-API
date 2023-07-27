@@ -1,10 +1,13 @@
 const db = require('../db')
-const {Report, User, Species} = require('../models')
 
+const {Report, User, Species} = require('../models')
+console.log("Hello")
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 const main = async () => {
+    console.log("Hello")
+    await User.deleteMany()
     const user1 = await new User ({
         name: 'John',
         userName: 'jjthefisherman',
@@ -22,48 +25,53 @@ const main = async () => {
     })
     user2.save()
 
-    const report = [
-        { 
-        userName: user1._id,
-        lat: -50,
-        lon: 74,
-        species: 'Smallmout Bass',
-        depth: 15,
-        Season: 'Summer',
-        lures: 'jig',
-        comment: 'Yep thats a fish i couth all right'
-        },
-        { 
-        userName: user2._id,
-        lon: -30,
-        lat: 25,
-        species: 'Carp',
-        depth: 10,
-        Season: 'Summer',
-        lures: 'jig',
-        comment: 'Yeah more carp!'
-        }
-    ]
+   
 
         const species = [
 
             { 
-                name: report1_id,
+                name: 'Carp',
                 length: '15" ',
                 weight: '3.75 lbs'
 
             },
             {
-                name: report2_id,
+                name: 'Smallmouth Bass',
                 length: '30" ',
                 weight: '10 lbs'
                 }
             ]
-    
-
-            await Species.inserMany(species)
+            await Species.deleteMany()
+            await Species.insertMany(species)
             console.log('Species created')
 
+            const Bass = await Species.find({name:'Smallmouth Bass'})
+            const Carp = await Species.find({name:'Carp'})
+            console.log(Bass, Carp)
+
+            const report = [
+                { 
+                userName: user1._id,
+                lat: -50,
+                lon: 74,
+                species: Bass._id,
+                depth: 15,
+                season: 'Summer',
+                lures: 'jig',
+                comment: 'Yep thats a fish i couth all right'
+                },
+                { 
+                userName: user2._id,
+                lon: -30,
+                lat: 25,
+                species: Carp._id,
+                depth: 10,
+                season: 'Summer',
+                lures: 'jig',
+                comment: 'Yeah more carp!'
+                }
+            ]
+            await Report.deleteMany()
             await Report.insertMany(report)
             console.log('Report Created')
     
@@ -71,8 +79,9 @@ const main = async () => {
 }
 
 const run = async () => {
+    console.log("Hello")
     await main()
-    db.clsoe()
+    db.close()
 }
 
 run()

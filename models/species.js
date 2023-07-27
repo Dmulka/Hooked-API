@@ -2,7 +2,7 @@ const {Schema} = require('mongoose')
 
 const speciesSchema = new Schema (
     {
-        name: {type: Schema.Types.ObjectId, ref: 'report'},
+        name: {type: String, required: true},
         length: {type: String, required: true},
         weight: {type: String, required: true}
 

@@ -4,7 +4,7 @@ const { Species } = require('../models')
 /// get all reports
 const getSpecies = async (req, res) => {
     try{
-        let allUsers = await Report.find()
+        let allUsers = await Species.find()
         res.send(allUsers)
     } catch (e) {
         return res.status(500).send(e.message)
@@ -25,7 +25,7 @@ const findSpeciesByName = async (req, res) => {
 }
 
 /// find by user by Id 
-const getreportById = async (req, res) => {
+const getSpeciestById = async (req, res) => {
     try{
         const {id} = req.params 
         const fish = await Species.findById(id)
@@ -56,7 +56,7 @@ const createSpecies = async (req, res) => {
     const updateSpecies = async (req, res,) => {
         try {
             const { id } = req.params 
-            const updateReport = await Report.findByIdAndUpdate(id, req.body , {new: true,})   
+            const updateReport = await Species.findByIdAndUpdate(id, req.body , {new: true,})   
             return res.json(updateReport)
         } catch (e) {
             console.log(e)
@@ -69,11 +69,11 @@ const createSpecies = async (req, res) => {
 const deleteSpecies = async (req, res) => {
     try {
       const { id } = req.params;
-      const post = await Report.findByIdAndDelete(id);
+      const post = await Species.findByIdAndDelete(id);
       if (!post) {
         return res.status(404).json({ message: "Post not found" });
       }
-      return res.status(200).send("Post deleted successfully");
+      return res.status(200).send(" species deleted successfully");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }}
@@ -82,6 +82,7 @@ const deleteSpecies = async (req, res) => {
     module.exports = {
         getSpecies,
         findSpeciesByName,
+        getSpeciestById,
         createSpecies,
         updateSpecies,
         deleteSpecies
