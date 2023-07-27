@@ -51,7 +51,7 @@ const main = async () => {
 
             const report = [
                 { 
-                userName: user1._id,
+                name: user1._id,
                 lat: -50,
                 lon: 74,
                 species: Bass._id,
@@ -61,7 +61,7 @@ const main = async () => {
                 comment: 'Yep thats a fish i couth all right'
                 },
                 { 
-                userName: user2._id,
+                name: user2._id,
                 lon: -30,
                 lat: 25,
                 species: Carp._id,

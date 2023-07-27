@@ -11,11 +11,11 @@ const getReport = async (req, res) => {
     }}
 
 /// find by userName
-const findByuserName = async (req, res) => {
+const getReportByUser = async (req, res) => {
     try{
-        const {name} = req.params
+        const {userId} = req.params
         console.log(name)
-        const userName = await Report.findOne({userName})
+        const userName = await Report.findOne({user: userId})
         if (!userName) throw Error('user not found ¯\_(ツ)_/¯')
         res.json(userName)
     } catch (e){
@@ -42,27 +42,29 @@ const getreportById = async (req, res) => {
 
 // Creat ***********
 
-const createUser = async (req, res) => {
+const createReport = async (req, res) => {
     try {
         const {
-            userName,
+            user,
             lat,
             lon,
             species,
             depth,
-            baitUsed,
+            season,
+            lures,
             comment,
         } = req.body;
         const report = await Report.create(
-            { userName, 
+            { user, 
                 lat, 
                 lon, 
                 species, 
                 depth, 
-                baitUsed, 
+                season,
+                lures, 
                 comment 
                 })
-        res.status(201).json(user)
+        res.status(201).json(report)
     } catch (error) {
         res.status(500).json({error: error.message})
     }}
@@ -97,9 +99,9 @@ const deleteReport = async (req, res) => {
 
     module.exports = {
         getReport,
-        findByuserName,
+        getReportByUser,
         getreportById,
         updateReport,
-        createUser,
+        createReport,
         deleteReport
         }

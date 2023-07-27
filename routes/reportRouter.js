@@ -3,10 +3,10 @@ const Router = require('express').Router()
 const controller = require('../controllers/reportControllers')
 
 Router.get('/', controller. getReport)
-Router.get('/name/:first_name', controller.findByuserName)
+Router.get('/getReportByUser/:userId', controller.getReportByUser)
 Router.get("/:id", controller.getreportById)
-Router.post('/', controller.updateReport)
-Router.put('/:id', controller.createUser)
+Router.put('/:id', controller.updateReport)
+Router.post('/', controller.createReport)
 Router.delete('/:id', controller.deleteReport)
 
 

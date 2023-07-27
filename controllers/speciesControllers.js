@@ -10,17 +10,17 @@ const getSpecies = async (req, res) => {
         return res.status(500).send(e.message)
     }}
 
-/// find by userName
+/// find by Name
 const findSpeciesByName = async (req, res) => {
     try{
         const {name} = req.params
         console.log(name)
-        const userName = await Species.findOne({userName})
-        if (!userName) throw Error('user not found ¯\_(ツ)_/¯')
-        res.json(userName)
+        const Name = await Species.findOne({name})
+        if (!Name) throw Error('Species not found ¯\_(ツ)_/¯')
+        res.json(Name)
     } catch (e){
         console.log(e)
-        res.send('drive not found')
+        res.send('species not found ¯\_(ツ)_/¯')
     }
 }
 
@@ -45,8 +45,8 @@ const getSpeciestById = async (req, res) => {
 const createSpecies = async (req, res) => {
     try {
         const {name, length, weight} = req.body;
-        const report = await Species.create({ name, length, weith,})
-        res.status(201).json(user)
+        const fish_species = await Species.create({ name, length, weight,})
+        res.status(201).json(fish_species)
     } catch (error) {
         res.status(500).json({error: error.message})
     }}

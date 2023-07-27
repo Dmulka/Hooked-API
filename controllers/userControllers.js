@@ -5,7 +5,7 @@ const { User } = require('../models')
 /// get all users 
 const getUser = async (req, res) => {
     try{
-        let allUsers = await Users.find()
+        let allUsers = await User.find()
         res.send(allUsers)
     } catch (e) {
         return res.status(500).send(e.message)
@@ -21,9 +21,9 @@ const findByName = async (req, res) => {
         res.json(userName)
     } catch (e){
         console.log(e)
-        res.send('drive not found')
-    }
-}
+        res.send('user not found ¯\_(ツ)_/¯')
+    }}
+
 
 /// find by user by Id 
 const getUserById = async (req, res) => {
@@ -70,11 +70,11 @@ const createUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
       const { id } = req.params;
-      const post = await Post.findByIdAndDelete(id);
+      const post = await User.findByIdAndDelete(id);
       if (!post) {
-        return res.status(404).json({ message: "Post not found" });
+        return res.status(404).json({ message: "User not found" });
       }
-      return res.status(200).send("Post deleted successfully");
+      return res.status(200).send("User deleted successfully");
     } catch (error) {
       res.status(500).json({ error: error.message });
     }}

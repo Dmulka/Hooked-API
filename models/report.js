@@ -2,7 +2,7 @@ const {Schema} = require('mongoose')
 
 const  reportSchema = new Schema (
     {
-        userName: {type: Schema.Types.ObjectId, ref:'user' },
+        user: {type: Schema.Types.ObjectId, ref:'user' },
         lon: {type: Number, required: true},
         lat: {type: Number, required: true},
         species: [{type: Schema.Types.ObjectId, ref: 'species'}],
