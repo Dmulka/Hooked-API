@@ -1,15 +1,18 @@
 const {Schema} = require('mongoose')
+const { Species } = require('./index')
+
+
 
 const  reportSchema = new Schema (
     {
-        user: {type: Schema.Types.ObjectId, ref:'user' },
-        lon: {type: Number, required: true},
-        lat: {type: Number, required: true},
-        species: [{type: Schema.Types.ObjectId, ref: 'species'}],
-        depth: {type: Number, required: true},
-        season:{type: String, required: true},
-        lures:{ type: String, required: true},
-        comment: {type: String, required: true},
+        user: {type: Schema.Types.ObjectId, ref:'User'},
+        lon: {type: Number, required: false},
+        lat: {type: Number, required: false},
+        species: {type: Schema.Types.ObjectId, ref: 'Species', require: true},
+        depth: {type: Number, required: false},
+        season:{type: String, required: false},
+        lures:{ type: String, required: false},
+        comment: {type: String, required: false},
     },
     {
         timestamp: true

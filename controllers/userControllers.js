@@ -14,9 +14,9 @@ const getUser = async (req, res) => {
 /// find by name 
 const findByName = async (req, res) => {
     try{
-        const {name} = req.params
-        console.log(name)
-        const userName = await User.findOne({name})
+        const {id} = req.params
+        console.log(id)
+        const userName = await User.findOne({id})
         if (!userName) throw Error('user not found ¯\_(ツ)_/¯')
         res.json(userName)
     } catch (e){

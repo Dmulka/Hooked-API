@@ -4,7 +4,7 @@ const { Report } = require('../models')
 /// get all reports
 const getReport = async (req, res) => {
     try{
-        let allUsers = await Report.find()
+        let allUsers = await Report.find().populate('species')
         res.send(allUsers)
     } catch (e) {
         return res.status(500).send(e.message)
@@ -20,7 +20,7 @@ const getReportByUser = async (req, res) => {
         res.json(userName)
     } catch (e){
         console.log(e)
-        res.send('drive not found')
+        res.send('species not found')
     }
 }
 
@@ -66,7 +66,7 @@ const createReport = async (req, res) => {
                 })
         res.status(201).json(report)
     } catch (error) {
-        res.status(500).json({error: error.message})
+        res.status(500).send(error.message)
     }}
 
 // Update ***********
